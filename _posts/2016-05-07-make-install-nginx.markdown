@@ -17,13 +17,15 @@ apt-get update
 apt-get upgrade
 ```
 
-### 编译 nginx 需要用到 gcc pcre gzip,先安装这些依赖库
+### 依赖包
+
+> 编译 nginx 需要用到 gcc pcre gzip,先安装这些依赖库
 
 ```
 apt-get install -y gcc libpcre3 libpcre3-dev libpng-dev
 ```
 
-### 下载nginx包,解压后编译
+### 下载
 
 ```
 wget http://nginx.org/download/nginx-1.10.1.tar.gz
@@ -76,7 +78,7 @@ cd /usr/locale/nginx/sbin
 ./nginx -s reopen
 ```
 
-### 检查配置文件是否有错误
+### 检查配置
 
 ```
 cd /usr/locale/nginx/sbin
@@ -90,7 +92,9 @@ cd /usr/locale/nginx/sbin
 ./nginx -s reload
 ```
 
-### 加入开机自启： vim /etc/rc.local
+### 开机自启
+
+修改 vim /etc/rc.local 文件
 在exit 0前加入nginx命令的路径
 例如：
 
