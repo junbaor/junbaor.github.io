@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Hello 2016"
-subtitle:   " \"Hello World, Hello Blog\""
+subtitle:   ""
 date:       2016-09-13 16:34:00
 author:     "junbaor"
 header-img: "img/post-bg-2015.jpg"
