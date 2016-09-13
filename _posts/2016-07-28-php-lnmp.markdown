@@ -1,0 +1,92 @@
+---
+layout:     post
+title:      "搭建php环境"
+subtitle:   ""
+date:       2016-07-26
+author:     "junbaor"
+header-img: "img/post-bg-01.jpg"
+catalog: true
+tags:
+    - 技术
+---
+
+> 本教程只按最简单的方法搭建环境，不深究为什么
+
+## 更新、升级软件仓库
+```
+apt-get update
+apt-get upgrade
+```
+
+## 安装 nginx
+```
+sudo apt-get install -y gcc make libpcre3 libpcre3-dev libpng-dev
+wget http://nginx.org/download/nginx-1.10.1.tar.gz
+tar zxvf nginx-1.10.1.tar.gz
+cd nginx-1.10.1
+./configure
+make && make install
+```
+> 默认安装在 /etc/local/nginx 目录下  
+
+## 安装 mysql
+```
+sudo apt-get -y install mysql-server
+```
+期间会让你设置数据库的密码，重复输入两次即可
+
+## 安装 php
+```
+sudo apt-get install php5 php5-mysql php5-fpm php5-curl php5-gd 
+```
+这里安装了 php 和 php 最常用的扩展，
+如果后期需要别的可以直接 `apt-get install php5-插件名` 
+
+## 配置php-fpm 
+> 我们要改的文件默认在 /etc/php5/fpm/pool.d/www.conf  
+
+大概在第 33 行，把 `listen = /var/run/php5-fpm.sock` 给成 `listen = 127.0.0.1:9000`
+
+完成以后需要重启一下 php-fpm 服务，命令：`service php5-fpm restart`
+
+## 修改 nginx 配置
+> nginx 默认安装在 /usr/local/nginx下，配置文件一般是该目录下的 conf/nginx.cnf
+
+找到类似代码块，在 index.html 前面加一个 index.php
+```
+location / {
+    root   html;
+    index  index.php index.html index.htm;
+}
+```
+找到类似代码块，修改一致
+```
+location ~ \.php$ {
+    root           html;
+    fastcgi_pass   127.0.0.1:9000;
+    fastcgi_index  index.php;
+    fastcgi_param  SCRIPT_FILENAME   $document_root$fastcgi_script_name;
+    include        fastcgi_params;
+}
+```
+
+## 建立测试网页
+进入 /usr/local/nginx/html 下,新建 index.php 文件，内容如下
+```
+<?php
+    phpinfo();
+?>
+```
+
+## 修改文件权限
+
+进入 /usr/local/nginx/ 目录，
+```
+chown www-data html
+chgrp www-data html
+```
+
+## 启动 nginx ，验证环境
+进入 /usr/local/nginx/sbin 下, 执行 `./nginx`
+
+访问网页，如果看到 php 版本信息就说明环境安装成功
