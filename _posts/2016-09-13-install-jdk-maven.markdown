@@ -10,7 +10,7 @@ tags:
     - 技术
 ---
 
-## 下载jdk和maven
+### 下载jdk和maven
 
 ```
 wget http://yun.junbaor.com/file/jdk.tar.gz  
@@ -18,14 +18,14 @@ wget http://yun.junbaor.com/file/jdk.tar.gz
 wget http://mirrors.hust.edu.cn/apache/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
 ```
 
-## 解压
+### 解压
 
 ```
 tar zxvf jdk.tar.gz
 tar zxvf apache-maven-3.3.9.bin.tar.gz
 ```
 
-## 重命名
+### 重命名
 像类库这种东西我一般会改成简洁的名字放置在/lib文件夹下
 
 ```
@@ -33,12 +33,10 @@ mv jdk1.8.0_60/ /lib/jvm
 mv apache-maven-3.3.9/ /lib/maven
 ```
 
-## 配置环境变量
+### 配置环境变量
 
 如果是对所有的用户都生效就修改 `/etc/profile` 文件
-
 如果只针对当前用户生效就修改 `～/.bahsrc` 文件
-
 在文件底部添加如下代码，如果上一步的路径和我的不一致要改一下
 
 ```
@@ -52,7 +50,7 @@ export MAVEN_HOME=/lib/maven
 export PATH=${MAVEN_HOME}/bin:${PATH}
 ```
 
-## 使环境变量生效
+### 使环境变量生效
 
 ```
 source /etc/profile
