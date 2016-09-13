@@ -8,6 +8,7 @@ header-img: "img/post-bg-01.jpg"
 catalog: true
 tags:
     - 技术
+    - mysql
 ---
 
 ### 更新
@@ -18,17 +19,21 @@ apt-get upgrade
 
 ### 安装
 `apt-get install mysql-server`
+
 会提示输入`root`用户的密码
 
 ### 修改编码
-> SHOW VARIABLES LIKE 'character_set_%'; #查看编码;
 
-`vim /etc/mysql/my.cnf`
+SHOW VARIABLES LIKE 'character_set_%'; #查看编码;
+
+修改 `vim /etc/mysql/my.cnf` 文件
 
 在 [mysqld] 标签下加
+
 ```
 default-character-set = utf8  
-//网上有的教程让加这句,其实没必要,会导致某些版本的 mysql 无法登陆
+
+网上有的教程让加这句,其实没必要,会导致某些版本的 mysql 无法登陆
 ```
 
 ```
@@ -55,9 +60,10 @@ bind-address        = 127.0.0.1
 ```
 
 ### 开启`root`的远程登录权限
+
+首先应确保 mysql 服务处于开启状态,然后进入 mysql 终端，执行以下命令
+
 ```
-service mysql restart #确保服务开启
-mysql -uroot -p #登录
 Grant all privileges on *.* to 'root'@'%' identified by 'root' with grant option;
 把后面的 `root` 替换成你自己的密码
 flush privileges; #刷新一下权限
@@ -65,7 +71,6 @@ flush privileges; #刷新一下权限
 
 ### 修改账户密码
 ```
-开启服务,登录mysql
 UPDATE mysql.user SET password=PASSWORD('root') WHERE user='root';
 把前面的 `root`替换成用户名 ,后面的 `root` 替换成密码即可
 `flush privileges;`
