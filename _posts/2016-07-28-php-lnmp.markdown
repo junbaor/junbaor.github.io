@@ -53,13 +53,16 @@ sudo apt-get install php5 php5-mysql php5-fpm php5-curl php5-gd
 > nginx 默认安装在 /usr/local/nginx下，配置文件一般是该目录下的 conf/nginx.cnf
 
 找到类似代码块，在 index.html 前面加一个 index.php
+
 ```
 location / {
     root   html;
     index  index.php index.html index.htm;
 }
 ```
+
 找到类似代码块，修改一致
+
 ```
 location ~ \.php$ {
     root           html;
@@ -72,10 +75,13 @@ location ~ \.php$ {
 
 ## 建立测试网页
 进入 /usr/local/nginx/html 下,新建 index.php 文件，内容如下
+
 ```
+
 <?php
     phpinfo();
 ?>
+
 ```
 
 ## 修改文件权限
