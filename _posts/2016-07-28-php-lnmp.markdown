@@ -2,7 +2,7 @@
 layout:     post
 title:      "搭建php环境"
 subtitle:   ""
-date:       2016-07-26
+date:       2016-07-26 01:00:00
 author:     "junbaor"
 header-img: "img/post-bg-01.jpg"
 catalog: true
