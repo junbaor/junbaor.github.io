@@ -2,7 +2,7 @@
 layout:     post
 title:      "编译安装nginx"
 subtitle:   ""
-date:       2016-09-13
+date:       2016-09-13 16:53:00
 author:     "junbaor"
 header-img: "img/post-bg-01.jpg"
 catalog: true
