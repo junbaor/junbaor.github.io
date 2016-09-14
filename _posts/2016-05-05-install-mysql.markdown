@@ -29,6 +29,7 @@ SHOW VARIABLES LIKE 'character_set_%'; #查看编码;
 修改 `vim /etc/mysql/my.cnf` 文件
 
 在 [mysqld] 标签下加
+
 ```
 character-set-server = utf8
 collation-server = utf8_general_ci
@@ -38,21 +39,25 @@ lower_case_table_names = 1  #表名大小写不敏感
 ```
 
 在 [mysql.server]标签下加
+
 ```
 default-character-set = utf8
 ```
 
 在 [mysqld_safe]标签下加
+
 ```
 default-character-set = utf8
 ```
 
 在 [client]标签下加
+
 ```
 default-character-set = utf8
 ```
 
 如果想让其他机子远程也可以登陆需要把这句注释掉(前面加`#`)
+
 ```
 bind-address        = 127.0.0.1
 ```
@@ -68,6 +73,7 @@ flush privileges; #刷新一下权限
 ```
 
 ### 修改账户密码
+
 ```
 UPDATE mysql.user SET password=PASSWORD('root') WHERE user='root';
 把前面的 `root`替换成用户名 ,后面的 `root` 替换成密码即可
