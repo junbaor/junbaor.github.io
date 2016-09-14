@@ -29,13 +29,6 @@ SHOW VARIABLES LIKE 'character_set_%'; #查看编码;
 修改 `vim /etc/mysql/my.cnf` 文件
 
 在 [mysqld] 标签下加
-
-```
-default-character-set = utf8  
-
-网上有的教程让加这句,其实没必要,会导致某些版本的 mysql 无法登陆
-```
-
 ```
 character-set-server = utf8
 collation-server = utf8_general_ci
@@ -43,14 +36,19 @@ init_connect = 'SET collation_connection = utf8_general_ci'
 init_connect = 'SET NAMES utf8'
 lower_case_table_names = 1  #表名大小写不敏感
 ```
-```
+
 在 [mysql.server]标签下加
+```
 default-character-set = utf8
+```
 
 在 [mysqld_safe]标签下加
+```
 default-character-set = utf8
+```
 
 在 [client]标签下加
+```
 default-character-set = utf8
 ```
 
