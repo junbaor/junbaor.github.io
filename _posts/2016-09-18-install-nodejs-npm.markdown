@@ -12,6 +12,8 @@ tags:
 
 ### 下载nodejs
 
+> 注意下载的二进制包要和系统的位数对应，这里采用的是 linux 64 位
+
 ```
 wget https://nodejs.org/dist/v6.6.0/node-v6.6.0-linux-x64.tar.xz
 ```
@@ -63,19 +65,20 @@ npm -v
 
 npm 的软件仓库在国外被墙了，要在国内使用需要使用阿里的镜像
 
-#### 方法一
+###### 方法一
 
 ```
 npm config set registry https://registry.npm.taobao.org
 ```
 
-#### 方法二
+###### 方法二
 
-在 npm 命令后加上 ` --registry https://registry.npm.taobao.org`
+在要执行的 npm 命令后加上 ` --registry https://registry.npm.taobao.org`
 
-#### 方法四
+###### 方法三
 
 编辑 ~/.npmrc 文件，追加如下内容：
-···
+
+```
 registry = https://registry.npm.taobao.org
-···
+```
